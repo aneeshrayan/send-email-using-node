@@ -24,6 +24,17 @@ var storage = multer.diskStorage({
    
 var upload = multer({ storage: storage })
 
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  }
+ 
+
+
+
 app.post('/',upload.single('file_cv'),(req,res)=>{
     var personName = req.body.name;
     var personEmail = req.body.email;
@@ -53,7 +64,7 @@ app.post('/',upload.single('file_cv'),(req,res)=>{
             path: `./uploads/${req.file.filename}`
         }
     ]
-}
+    }
     transporter.sendMail(mailOptions,(err,info)=>{
         if(err){
             console.log(err);
