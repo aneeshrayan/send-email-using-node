@@ -48,14 +48,14 @@ app.post('/',upload.single('file_cv'),(req,res)=>{
         port: 465,
         source: true,
         auth:{
-            user:'rayan3188@gmail.com',
-            pass: 'rayancha31'
+            user:"email",
+            pass: 'pass'
         }
 
     });
     let mailOptions = {
-    from: "rayan3188@gmail.co",
-    to: "saianeeshrayancha@gmail.com",
+    from: "email",
+    to: "email2",
     subject: message,
     text: message,
     html: "Message Body",
